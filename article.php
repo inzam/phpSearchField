@@ -2,21 +2,18 @@
     include 'header.php';
 ?>
 
+   
     <div class="container">
-        <form class="form-inline my-2 my-lg-0 float-right" action="search.php" method="POST">
-            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit" name="submit-search">Search</button>
-        </form>
-    </div>
-    <br><br>
-
-    <div class="container">
-    <h1>Front page</h1>
-    <h2>All Articles:</h2>
+    <h1>Article page</h1>
+   
     <br><br>
         <?php
-            $sql = "SELECT * FROM article";
+            $title = mysqli_escape_string($conn,$_GET['title']);
+            $timestamp = mysqli_escape_string($conn,$_GET['date']);
+
+            $sql = "SELECT * FROM article WHERE title = '$title' AND ts = '$timestamp'";
             $result = mysqli_query($conn,$sql);
+            //var_dump($result);
             $queryResults = mysqli_num_rows($result);
 
             if($queryResults>0){

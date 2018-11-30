@@ -1,3 +1,6 @@
+<?php
+require 'includes/db.inc.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
